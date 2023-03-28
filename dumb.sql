@@ -11,3 +11,9 @@ CREATE TABLE "clients" (
 "email" VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE "sessions" (
+"id" SERIAL PRIMARY KEY,
+"clientId" INTEGER NOT NULL REFERENCES "clients"("id"),
+"name" VARCHAR(100) NOT NULL,
+"token" TEXT NOT NULL
+);
