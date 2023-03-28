@@ -1,8 +1,11 @@
-import { signupSchema } from "./../models/signup.models.js";
+import { signupSchema } from "../models/signup.models";
 import bcrypt from "bcrypt";
-import { connection } from "../database/db.js";
+import { connection } from "../database/db";
+import { Request, Response } from "express";
+import {signUpBody} from "../interfaces/interface"
 
-export async function signUp(req, res) {
+export async function signUp(req: Request, res: Response) {
+
   const {
     name,
     address,
@@ -13,7 +16,7 @@ export async function signUp(req, res) {
     cpf,
     payment,
     email,
-  } = req.body;
+  }:signUpBody = req.body;
 
   const validation = signupSchema.validate(req.body, { abortEarly: false });
   if (validation.error) {
@@ -21,7 +24,7 @@ export async function signUp(req, res) {
     return;
   }
 
-  const passwordHash = bcrypt.hashSync(password, 10);
+
   try {
     const { rows } = await connection.query(
       "SELECT * FROM clients WHERE cpf=$1;",
@@ -32,8 +35,8 @@ export async function signUp(req, res) {
       res.status(404).send("CPF já cadastrado!");
       return;
     }
-  } catch (err) {
-    res.status(500).send(err.message);
+  } catch (error) {
+    res.status(500).send(error);
   }
 
   try {
@@ -46,17 +49,18 @@ export async function signUp(req, res) {
       res.status(404).send("Email já cadastrado!");
       return;
     }
-  } catch (err) {
-    res.status(500).send(err.message);
+  } catch (error) {
+    res.status(500).send(error);
   }
-
+  const passwordHash = bcrypt.hashSync(password, 10);
+  
   try {
     await connection.query(
       "INSERT INTO clients (name,address,cep,password,phone,phonecontact,cpf,payment,email) VALUES ($1, $2, $3,$4,$5,$6, $7,$8,$9);",
-      [name, address, cep, password, phone, phonecontact, cpf, payment, email]
+      [name, address, cep, passwordHash, phone, phonecontact, cpf, payment, email]
     );
     res.sendStatus(201);
-  } catch (err) {
-    res.status(500).send(err.message);
+  } catch (error) {
+    res.status(500).send(error);
   }
 }
