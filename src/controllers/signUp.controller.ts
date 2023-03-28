@@ -8,8 +8,6 @@ export async function signUp(req: Request, res: Response) {
 
   const {
     name,
-    address,
-    cep,
     password,
     phone,
     phonecontact,
@@ -25,19 +23,7 @@ export async function signUp(req: Request, res: Response) {
   }
 
 
-  try {
-    const { rows } = await connection.query(
-      "SELECT * FROM clients WHERE cpf=$1;",
-      [cpf]
-    );
 
-    if (rows.length > 0) {
-      res.status(404).send("CPF já cadastrado!");
-      return;
-    }
-  } catch (error) {
-    res.status(500).send(error);
-  }
 
   try {
     const { rows } = await connection.query(
@@ -56,8 +42,8 @@ export async function signUp(req: Request, res: Response) {
   
   try {
     await connection.query(
-      "INSERT INTO clients (name,address,cep,password,phone,phonecontact,cpf,payment,email) VALUES ($1, $2, $3,$4,$5,$6, $7,$8,$9);",
-      [name, address, cep, passwordHash, phone, phonecontact, cpf, payment, email]
+      "INSERT INTO clients (name,password,phone,phonecontact,cpf,email) VALUES ($1, $2, $3,$4,$5,$6);",
+      [name, passwordHash, phone, phonecontact, cpf, email]
     );
     res.sendStatus(201);
   } catch (error) {

@@ -1,12 +1,12 @@
 CREATE TABLE "clients" (
 "id" SERIAL PRIMARY KEY,
 "name" VARCHAR(100) NOT NULL,
-"address" VARCHAR(255) NOT NULL,
-"phone" NUMERIC NOT NULL,
-"phonecontact" NUMERIC NOT NULL,
-"cpf" NUMERIC NOT NULL,
+"address" VARCHAR(255),
+"phone" TEXT NOT NULL,
+"phonecontact" NUMERIC ,
+"cpf" TEXT,
 "password" TEXT NOT NULL,
-"cep" NUMERIC NOT NULL,
+"cep" TEXT ,
 "payment" TEXT NOT NULL,
 "email" VARCHAR(255) NOT NULL
 );
