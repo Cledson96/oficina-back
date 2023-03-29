@@ -23,8 +23,6 @@ export async function signUp(req: Request, res: Response) {
   }
 
 
-
-
   try {
     const { rows } = await connection.query(
       "SELECT * FROM clients WHERE email=$1;",
