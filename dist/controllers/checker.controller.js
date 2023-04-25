@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.checker = void 0;
-const db_1 = require("@/database/db");
+const db_1 = require("../database/db");
 function checker(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const { token } = req.headers;

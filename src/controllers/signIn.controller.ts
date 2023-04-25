@@ -1,7 +1,7 @@
-import { signInSchema } from "@/models/signIn.models";
+import { signInSchema } from "../models/signin.models";
 import { Request, Response } from "express";
 import bcrypt from "bcrypt";
-import { connection } from "@/database/db";
+import { connection } from "../database/db";
 import { v4 } from "uuid";
 import {signInBody} from "./../interfaces/interface"
 

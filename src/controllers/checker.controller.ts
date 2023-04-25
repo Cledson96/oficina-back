@@ -1,4 +1,4 @@
-import { connection } from "@/database/db";
+import { connection } from "../database/db";
 import { Request, Response } from "express";
 
 

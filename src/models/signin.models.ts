@@ -1,5 +1,5 @@
 import joi from "joi";
-import {signInBody} from "./../interfaces/interface"
+import {signInBody} from "../interfaces/interface"
 
   export const signInSchema = joi.object<signInBody>({
     email: joi.string().email().required(),

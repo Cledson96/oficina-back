@@ -13,13 +13,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.signIn = void 0;
-const signIn_models_1 = require("@/models/signIn.models");
+const signin_models_1 = require("../models/signin.models");
 const bcrypt_1 = __importDefault(require("bcrypt"));
-const db_1 = require("@/database/db");
+const db_1 = require("../database/db");
 const uuid_1 = require("uuid");
 function signIn(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const validation = signIn_models_1.signInSchema.validate(req.body, { abortEarly: false });
+        const validation = signin_models_1.signInSchema.validate(req.body, { abortEarly: false });
         if (validation.error) {
             res.status(422).send("Digite corretamente seu login!");
             return;
