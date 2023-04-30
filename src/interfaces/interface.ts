@@ -14,3 +14,16 @@ export interface signUpBody {
     email: string;
     password: string;
   }
+
+  export interface produtoBody {
+    nome: string;
+    categoria: number;
+    marca: number;
+    qtd: number;
+    vendidos: number;
+    codigo: string;
+    preco: string;
+    promocao: string;
+    foto: string;
+    descricao:string;
+  }
