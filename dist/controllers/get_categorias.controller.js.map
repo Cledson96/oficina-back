@@ -1,0 +1,1 @@
+{"version":3,"file":"get_categorias.controller.js","sourceRoot":"","sources":["../../src/controllers/get_categorias.controller.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,uCAA4C;AAG5C,SAAsB,SAAS,CAAC,GAAY,EAAE,GAAa;;QACtD,MAAM,QAAQ,GAAG,MAAM,eAAU,CAAC,KAAK,CAAC,0BAA0B,CAAC,CAAC;QACrE,GAAG,CAAC,IAAI,CAAC,QAAQ,CAAC,IAAI,CAAC,CAAA;QACvB,OAAM;IAEV,CAAC;CAAA;AALD,8BAKC"}
