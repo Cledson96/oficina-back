@@ -24,6 +24,7 @@ export interface signUpBody {
     codigo: string;
     preco: string;
     promocao: string;
-    foto: string;
+  
     descricao:string;
+  
   }

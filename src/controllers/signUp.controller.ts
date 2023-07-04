@@ -4,6 +4,7 @@ import { connection } from "../database/db";
 import { Request, Response } from "express";
 import {signUpBody} from "../interfaces/interface"
 
+
 export async function signUp(req: Request, res: Response) {
 
   const {
