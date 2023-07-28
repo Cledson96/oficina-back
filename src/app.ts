@@ -11,6 +11,7 @@ import get_produto from "./routes/get_produtos_id";
 import get_categoria from "./routes/get_categoria";
 import ranking from "./routes/ranking";
 import frete from "./routes/frete";
+
 const app = express();
 dotenv.config();
 
@@ -28,6 +29,7 @@ app.use(get_produto);
 app.use(get_categoria);
 app.use(frete);
 app.use(express.static('uploads'));
+
 const port = 55505;
 
 app.listen(port, () => console.log(`Server running in port ${port}`));
