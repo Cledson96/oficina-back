@@ -6,7 +6,6 @@ export default async function Frete(req: Request, res: Response) {
 
   const cep: number = req.body.cep;
   const produtos: produtoBody[] = req.body.produtos;
-  console.log(produtos);
   if (!cep || cep.toString().length !== 8) {
     res
       .status(400)

@@ -13,7 +13,7 @@ export async function checker(req: Request, res: Response) {
 try{
     const { rows } = await connection.query('SELECT * FROM sessions WHERE token =$1;',[token])
     if(rows.length>0){
-        res.status(200).send(rows[0].name);
+        res.status(200).send({nome:rows[0].name,id:rows[0].clientId});
         return
     }
     res.status(404).send("token invalido")

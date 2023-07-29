@@ -11,6 +11,7 @@ import get_produto from "./routes/get_produtos_id";
 import get_categoria from "./routes/get_categoria";
 import ranking from "./routes/ranking";
 import frete from "./routes/frete";
+import cliente from "./routes/cliente";
 
 const app = express();
 dotenv.config();
@@ -27,6 +28,7 @@ app.use(ranking);
 app.use(get_produtos);
 app.use(get_produto);
 app.use(get_categoria);
+app.use(cliente);
 app.use(frete);
 app.use(express.static('uploads'));
 
