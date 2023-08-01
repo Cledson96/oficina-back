@@ -12,6 +12,7 @@ import get_categoria from "./routes/get_categoria";
 import ranking from "./routes/ranking";
 import frete from "./routes/frete";
 import cliente from "./routes/cliente";
+import pagamento from "./routes/pagamento";
 
 const app = express();
 dotenv.config();
@@ -30,6 +31,7 @@ app.use(get_produto);
 app.use(get_categoria);
 app.use(cliente);
 app.use(frete);
+app.use(pagamento);
 app.use(express.static('uploads'));
 
 const port = 55505;
