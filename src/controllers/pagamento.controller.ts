@@ -8,6 +8,7 @@ mercadopago.configure({
 export function pagamento(req: Request, res: Response) {
   const preference = req.body.envio;
   console.log(req.body)
+  console.log(preference);
   mercadopago.preferences
     .create(preference)
     .then((response) => {
