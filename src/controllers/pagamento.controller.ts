@@ -49,7 +49,7 @@ export function pagamento(req: Request, res: Response) {
       return;
     })
     .catch((error) => {
-      res.status(400).send(error);
+      res.status(400).send({error:error});
       return;
     });
 }
