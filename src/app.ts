@@ -13,6 +13,7 @@ import ranking from "./routes/ranking";
 import frete from "./routes/frete";
 import cliente from "./routes/cliente";
 import pagamento from "./routes/pagamento";
+import webhook from "./routes/webhook";
 
 const app = express();
 dotenv.config();
@@ -32,6 +33,7 @@ app.use(get_categoria);
 app.use(cliente);
 app.use(frete);
 app.use(pagamento);
+app.use(webhook);
 app.use(express.static('uploads'));
 
 const port = 55505;
