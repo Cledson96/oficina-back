@@ -107,6 +107,11 @@ export async function webhook(req: Request, res: Response) {
                 });
               }
             }
+            await prisma.pagamento.delete({
+              where: {
+                id: compra.id,
+              },
+            });
           }
         } catch (error) {
           console.log(error);
