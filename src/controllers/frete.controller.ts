@@ -1,11 +1,13 @@
-import { Request, Response, response } from "express";
+import { Request, Response } from "express";
 import axios from "axios";
-import { produtoBody , isValidProduct } from "../interfaces/interface";
+import { produtoBody, isValidProduct , ProdutoFrete ,EnvioFrete} from "../interfaces/interface";
+
 
 export default async function Frete(req: Request, res: Response) {
 
   const cep: number = req.body.cep;
   const produtos: produtoBody[] = req.body.produtos;
+  
   if (!cep || cep.toString().length !== 8) {
     res
       .status(400)
@@ -20,7 +22,7 @@ export default async function Frete(req: Request, res: Response) {
     return;
   }
 
-  const url = `${process.env.FRETE_DOMINIO}api/v2/me/shipment/calculate`;
+  const url:string = `${process.env.FRETE_DOMINIO}api/v2/me/shipment/calculate`;
 
   const headersConfig = {
     Accept: "application/json",
@@ -29,7 +31,7 @@ export default async function Frete(req: Request, res: Response) {
     "User-Agent": "Aplicação (cledson1996@gmail.com)",
   };
 
-  const listaProduto = produtos.map((referencia) => {
+  const listaProduto :ProdutoFrete[] = produtos.map((referencia) => {
     return {
       id: referencia.id,
       width: referencia.largura,
@@ -40,25 +42,25 @@ export default async function Frete(req: Request, res: Response) {
       quantity: referencia.quantidade,
     };
   });
-
-  const requestBody = {
+ 
+  const requestBody:EnvioFrete = {
     from: {
-      postal_code: process.env.CEP_ENVIO?.toString(),
+      postal_code: process.env.CEP_ENVIO?.toString() ?? '81170140',
     },
     to: {
       postal_code: cep.toString(),
     },
-    products:listaProduto,
+    products: listaProduto,
   };
 
   try {
     const response = await axios.post(url, requestBody, {
       headers: headersConfig,
     });
+
     res.status(200).send(response.data);
     return;
   } catch (error) {
-    console.error("Erro na requisição:", error);
     res.status(500).send("Erro interno do servidor");
     return;
   }

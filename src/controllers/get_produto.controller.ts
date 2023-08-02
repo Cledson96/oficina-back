@@ -1,13 +1,36 @@
-import { connection } from "../database/db";
 import { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
+export async function produtoid(req: Request, res: Response): Promise<void> {
+  const id: number = Number(req.params.id);
 
+  try {
+    const produto = await prisma.produtos.findFirst({
+      where: {
+        id: id,
+      },
+      select: {
+        id: true,
+        nome: true,
+        descricao: true,
+        preco: true,
+        fotos: {
+          select: {
+            caminho: true,
+          },
+        },
+      },
+    });
 
-export async function produtoid(req: Request, res: Response) {
-   const id= req.params.id
- 
-    const sessions = await connection.query(`SELECT  p.*,  json_agg(f.caminho) AS fotos FROM produtos p LEFT JOIN fotos f ON p.id = f.id_produto WHERE p.id = ${id} GROUP BY p.id;`);
-    res.send(sessions.rows)
-    return
+    if (!produto) {
+      res.status(404).send("Produto não encontrado!");
+      return;
+    }
 
+    res.status(200).send(produto);
+    return;
+  } catch (error) {
+    res.status(500).send(error);
+  }
 }

@@ -1,0 +1,264 @@
+{
+  "clients": [
+    {
+      "id": 2,
+      "name": "cledson",
+      "address": null,
+      "phone": "4197979797",
+      "phonecontact": null,
+      "cpf": null,
+      "password": "$2b$10$NdtR6eg9koqq5X.L5zj7PuRoSYiGDI1VFTfqw7f3Ug/QAmfuYBZbO",
+      "cep": null,
+      "payment": null,
+      "email": "cledson@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "sdasfs",
+      "address": null,
+      "phone": "123",
+      "phonecontact": "123",
+      "cpf": null,
+      "password": "$2b$10$wHnHR.rdnQEe0NxlY9G/DOjQ4.jSmPbg2bJoXwDM.Nq3XCU0wlO72",
+      "cep": null,
+      "payment": null,
+      "email": "safsfds@gmail.com"
+    },
+    {
+      "id": 4,
+      "name": "cledson santos souza",
+      "address": null,
+      "phone": "41997975542",
+      "phonecontact": "41997975542",
+      "cpf": null,
+      "password": "$2b$10$fqeyNmmRAMN79AZ6BRquGOltmVxXUJyGdSMNpaAkxfaNqtJoSR56O",
+      "cep": null,
+      "payment": null,
+      "email": "cledson1996@gmail.com"
+    }
+  ],
+  "categoria": [
+    {
+      "id": 1,
+      "nome": "àleos"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 7,
+      "categoria_id": 1,
+      "marca": "Militec",
+      "qtd": 10,
+      "vendidos": 2,
+      "codigo": " ",
+      "preco": 21.99,
+      "promocao": 15.99,
+      "foto": "militec.png",
+      "descricao": "O Militec-1 ‚ um l¡quido sint‚tico de colora‡Æo dourada, similar aos ¢leos SAE 10 em viscosidade.Mesmo que, na maioria dos casos, Militec-1, seja adicionado ao ¢leo, nÆo ‚ um aditivo de ¢leo, pois nÆo cont‚m melhoradores do ¡ndice de viscosidade, nÆo altera a composi‡Æo f¡sico-qu¡mica, nem o intervalo de troca de ¢leo. Militec-1 ‚ um condicionador de metais. Pode ser aplicado puro (em locais de atrito entre metais, que nÆo utilizem ¢leo ou graxa) e tamb‚m pode ser adicionado … qualquer tipo de ¢leo ou graxa existentes no mercado, sejam eles minerais, sint‚ticos ou semissint‚ticos.",
+      "nome": "Condicionador de Metais 40ml",
+      "peso": "1",
+      "altura": 3,
+      "largura": 3,
+      "profundidade": 1
+    },
+    {
+      "id": 8,
+      "categoria_id": 1,
+      "marca": "Militec",
+      "qtd": 10,
+      "vendidos": 0,
+      "codigo": " ",
+      "preco": 21.99,
+      "promocao": 15.99,
+      "foto": "militec.png",
+      "descricao": "O Militec-1 ‚ um l¡quido sint‚tico de colora‡Æo dourada, similar aos ¢leos SAE 10 em viscosidade.Mesmo que, na maioria dos casos, Militec-1, seja adicionado ao ¢leo, nÆo ‚ um aditivo de ¢leo, pois nÆo cont‚m melhoradores do ¡ndice de viscosidade, nÆo altera a composi‡Æo f¡sico-qu¡mica, nem o intervalo de troca de ¢leo. Militec-1 ‚ um condicionador de metais. Pode ser aplicado puro (em locais de atrito entre metais, que nÆo utilizem ¢leo ou graxa) e tamb‚m pode ser adicionado … qualquer tipo de ¢leo ou graxa existentes no mercado, sejam eles minerais, sint‚ticos ou semissint‚ticos.",
+      "nome": "Condicionador de Metais 40ml",
+      "peso": "2",
+      "altura": 1,
+      "largura": 1,
+      "profundidade": 3
+    },
+    {
+      "id": 42,
+      "categoria_id": 1,
+      "marca": "Mobil",
+      "qtd": 20,
+      "vendidos": 1,
+      "codigo": "not",
+      "preco": 12.5,
+      "promocao": 10,
+      "foto": "foto-1683520736712.jpg",
+      "descricao": "àleo Para Motor 20W50 Mineral Mobil Super",
+      "nome": "Mobil 20W50 Mineral ",
+      "peso": "1",
+      "altura": 3,
+      "largura": 2,
+      "profundidade": 2
+    },
+    {
+      "id": 5,
+      "categoria_id": 1,
+      "marca": "Militec",
+      "qtd": 10,
+      "vendidos": 0,
+      "codigo": " ",
+      "preco": 21.99,
+      "promocao": 0,
+      "foto": "militec.png",
+      "descricao": "O Militec-1 ‚ um l¡quido sint‚tico de colora‡Æo dourada, similar aos ¢leos SAE 10 em viscosidade.Mesmo que, na maioria dos casos, Militec-1, seja adicionado ao ¢leo, nÆo ‚ um aditivo de ¢leo, pois nÆo cont‚m melhoradores do ¡ndice de viscosidade, nÆo altera a composi‡Æo f¡sico-qu¡mica, nem o intervalo de troca de ¢leo. Militec-1 ‚ um condicionador de metais. Pode ser aplicado puro (em locais de atrito entre metais, que nÆo utilizem ¢leo ou graxa) e tamb‚m pode ser adicionado … qualquer tipo de ¢leo ou graxa existentes no mercado, sejam eles minerais, sint‚ticos ou semissint‚ticos.",
+      "nome": "Condicionador de Metais 40ml",
+      "peso": "2",
+      "altura": 2,
+      "largura": 2,
+      "profundidade": 2
+    },
+    {
+      "id": 6,
+      "categoria_id": 1,
+      "marca": "Militec",
+      "qtd": 10,
+      "vendidos": 0,
+      "codigo": " ",
+      "preco": 21.99,
+      "promocao": 15.99,
+      "foto": "militec.png",
+      "descricao": "O Militec-1 ‚ um l¡quido sint‚tico de colora‡Æo dourada, similar aos ¢leos SAE 10 em viscosidade.Mesmo que, na maioria dos casos, Militec-1, seja adicionado ao ¢leo, nÆo ‚ um aditivo de ¢leo, pois nÆo cont‚m melhoradores do ¡ndice de viscosidade, nÆo altera a composi‡Æo f¡sico-qu¡mica, nem o intervalo de troca de ¢leo. Militec-1 ‚ um condicionador de metais. Pode ser aplicado puro (em locais de atrito entre metais, que nÆo utilizem ¢leo ou graxa) e tamb‚m pode ser adicionado … qualquer tipo de ¢leo ou graxa existentes no mercado, sejam eles minerais, sint‚ticos ou semissint‚ticos.",
+      "nome": "Condicionador de Metais 40ml",
+      "peso": "1",
+      "altura": 2,
+      "largura": 3,
+      "profundidade": 3
+    },
+    {
+      "id": 43,
+      "categoria_id": 1,
+      "marca": "Mobil",
+      "qtd": 5,
+      "vendidos": 0,
+      "codigo": "not",
+      "preco": 15,
+      "promocao": 12,
+      "foto": "foto-1683521512949.jpg",
+      "descricao": "àleo Para Motor 20W50 Mineral Mobil Super",
+      "nome": "Mobil 20W50 Mineral ",
+      "peso": "2",
+      "altura": 2,
+      "largura": 3,
+      "profundidade": 1
+    },
+    {
+      "id": 50,
+      "categoria_id": 1,
+      "marca": "Mobil",
+      "qtd": 5,
+      "vendidos": 0,
+      "codigo": "not",
+      "preco": 15,
+      "promocao": 12,
+      "foto": "foto-7ba10f4f-b44d-4f60-9311-9bb8c2d5b8f8.jpg",
+      "descricao": "àleo Para Motor 20W50 Mineral Mobil Super",
+      "nome": "Mobil 20W50 Mineral ",
+      "peso": "2",
+      "altura": 3,
+      "largura": 2,
+      "profundidade": 4
+    },
+    {
+      "id": 51,
+      "categoria_id": 1,
+      "marca": "Mobil",
+      "qtd": 5,
+      "vendidos": 0,
+      "codigo": "not",
+      "preco": 15,
+      "promocao": 12,
+      "foto": "foto-72346d3c-cf03-4693-adc3-9d29e154ddb0.jpg",
+      "descricao": "àleo Para Motor 20W50 Mineral Mobil Super",
+      "nome": "Mobil 20W50 Mineral ",
+      "peso": "1",
+      "altura": 3,
+      "largura": 2,
+      "profundidade": 1
+    }
+  ],
+  "fotos": [
+    {
+      "id": 44,
+      "id_produto": 43,
+      "caminho": "foto-1683521512945.jpg"
+    },
+    {
+      "id": 45,
+      "id_produto": 43,
+      "caminho": "foto-1683521512945.jpg"
+    },
+    {
+      "id": 46,
+      "id_produto": 43,
+      "caminho": "foto-1683521512946.jpg"
+    },
+    {
+      "id": 47,
+      "id_produto": 43,
+      "caminho": "foto-1683521512946.jpg"
+    },
+    {
+      "id": 48,
+      "id_produto": 43,
+      "caminho": "foto-1683521512947.jpg"
+    },
+    {
+      "id": 49,
+      "id_produto": 43,
+      "caminho": "foto-1683521512947.jpg"
+    },
+    {
+      "id": 52,
+      "id_produto": 51,
+      "caminho": "foto-2cab6518-d28d-4738-bbcc-157b6b8d5df2.jpg"
+    },
+    {
+      "id": 53,
+      "id_produto": 51,
+      "caminho": "foto-99bc2bb3-2ffb-4aad-aeab-bf9ab631b2e0.jpg"
+    },
+    {
+      "id": 54,
+      "id_produto": 51,
+      "caminho": "foto-4c6bf34b-a1f4-4f34-9f85-b4b0c1abba37.jpg"
+    },
+    {
+      "id": 55,
+      "id_produto": 51,
+      "caminho": "foto-0d9a6126-c714-4180-bfbf-3b792ecc5b49.jpg"
+    },
+    {
+      "id": 56,
+      "id_produto": 51,
+      "caminho": "foto-3129b756-b04b-42fc-b6e7-e5b09b2877bb.jpg"
+    },
+    {
+      "id": 57,
+      "id_produto": 51,
+      "caminho": "foto-db456715-94a6-4e8d-b043-a29245f719bd.jpg"
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "clientId": 2,
+      "name": "cledson",
+      "token": "777932ea-bcfd-4ac7-a9b4-0fe50496849f"
+    },
+    {
+      "id": 2,
+      "clientId": 4,
+      "name": "cledson santos souza",
+      "token": "a9a71276-0469-4d1f-9027-1909a7b91c40"
+    }
+  ],
+  "enderecos": [],
+  "vendas": [],
+  "pagamentos": [],
+  "produtos_vendidos": []
+}

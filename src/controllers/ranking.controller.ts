@@ -1,13 +1,19 @@
-import { connection } from "../database/db";
 import { Request, Response } from "express";
-
-
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function ranking(req: Request, res: Response) {
-    
-    
-    const sessions = await connection.query(`SELECT* FROM produtos ORDER BY vendidos DESC LIMIT 5 ;`);
-    res.send(sessions.rows)
-    return
+  try {
+    const produtos = await prisma.produtos.findMany({
+      orderBy: {
+        vendidos: "desc",
+      },
+      take: 5,
+    });
 
+    res.status(200).send(produtos);
+    return;
+  } catch (error) {
+    res.status(500).send(error);
+  }
 }

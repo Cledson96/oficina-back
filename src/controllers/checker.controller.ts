@@ -1,25 +1,32 @@
-import { connection } from "../database/db";
 import { Request, Response } from "express";
-
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function checker(req: Request, res: Response) {
-    const { token } = req.headers;
+  const { token } = req.headers;
 
-    if (!token) {
-        res.status(404).send("Obrigatório envio de um token valido!");
-        return
-      }
+  if (!token) {
+    res.status(404).send("Obrigatório envio de um token valido!");
+    return;
+  }
 
-try{
-    const { rows } = await connection.query('SELECT * FROM sessions WHERE token =$1;',[token])
-    if(rows.length>0){
-        res.status(200).send({nome:rows[0].name,id:rows[0].clientId});
-        return
+  try {
+    const session = await prisma.sessions.findFirst({
+      where: {
+        token: token as string,
+      },
+      select: {
+        name: true,
+        clientId: true,
+      },
+    });
+
+    if (session) {
+      res.status(200).send({ nome: session.name, id: session.clientId });
+    } else {
+      res.status(404).send("Token inválido");
     }
-    res.status(404).send("token invalido")
-    return
-}catch (error) {
+  } catch (error) {
     res.status(500).send(error);
-    return
   }
 }

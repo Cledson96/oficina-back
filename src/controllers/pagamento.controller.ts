@@ -1,55 +1,36 @@
 import { Request, Response } from "express";
 import mercadopago from "mercadopago";
+import { Cliente, Envio } from "./../interfaces/interface";
+import { PrismaClient } from "@prisma/client";
+import { v4 } from "uuid";
+const prisma = new PrismaClient();
+
+const accessToken: string = process.env.ACESS_TOKEN || "";
+
 mercadopago.configure({
-  access_token:
-    "TEST-829559400567707-072712-870686e10ccc7ed19c68024e9610075a-230791369",
+  access_token: accessToken,
 });
 
-export function pagamento(req: Request, res: Response) {
-  const preference = req.body.envio;
-  console.log(req.body)
-  console.log(preference);
-  mercadopago.preferences
-    .create({
-      items: [
-        {
-          id: "item-ID-1234",
-          title: "Meu produto",
-          currency_id: "BRL",
-          picture_url: "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
-          description: "Descrição do Item",
-          category_id: "art",
-          quantity: 1,
-          unit_price: 75.76
-        },
-      ],
-      payer: {
-        name: "João",
-        surname: "Silva",
-        email: "user@email.com",
-        phone: {
-          area_code: "11",
-          number: "4444-4444"
-        },
+export async function pagamento(req: Request, res: Response): Promise<void> {
+  try {
+    const preference: Envio = req.body.envio;
+    const cliente: Cliente = req.body.cliente;
+    const token = v4();
+    
+    preference.external_reference = token;
 
-        address: {
-          street_name: "Street",
-          street_number: 123,
-          zip_code: "06233200"
-        }
+    const response = await mercadopago.preferences.create(preference);
+
+    const pagamento = await prisma.pagamento.create({
+      data: {
+        user_id: cliente.cliente.id,
+        preferencia: token,
+        compra: JSON.stringify(cliente),
       },
-      back_urls: {
-        success: "http://localhost:3000/concluido",
-        failure: "http://localhost:3000/concluido",
-      },
-      auto_return: "approved",
-    })
-    .then((response) => {
-      res.status(200).send(response.body.id);
-      return;
-    })
-    .catch((error) => {
-      res.status(400).send({error:error});
-      return;
     });
+   
+    res.status(200).send(response.body.id);
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 }

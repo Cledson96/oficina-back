@@ -1,4 +1,3 @@
-import { connection } from "@/database/db";
 import { Router } from "express";
 
 const router = Router();

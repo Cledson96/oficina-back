@@ -1,0 +1,122 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("BANCO_DE_DADOS")
+}
+
+model categoria {
+  id       Int        @id @default(autoincrement())
+  nome     String
+  produtos produtos[]
+}
+
+model clients {
+  id           Int         @id @default(autoincrement())
+  name         String      @db.VarChar(100)
+  address      String?     @db.VarChar(255)
+  phone        String
+  phonecontact Decimal?    @db.Decimal
+  cpf          String?
+  password     String
+  cep          String?
+  payment      String?
+  email        String      @db.VarChar(255)
+  pagamento    pagamento[]
+  sessions     sessions[]
+  vendas       vendas[]
+  enderecos    enderecos[]
+}
+
+model fotos {
+  id         Int      @id @default(autoincrement())
+  id_produto Int
+  caminho    String
+  produtos   produtos @relation(fields: [id_produto], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model pagamento {
+  id          Int       @id @default(autoincrement())
+  user_id     Int?
+  data_compra DateTime? @default(now()) @db.Timestamptz(6)
+  compra      Json?
+  preferencia String?
+  clients     clients?  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model produtos {
+  id                Int                 @id @default(autoincrement())
+  categoria_id      Int
+  marca             String
+  qtd               Int
+  vendidos          Int?                @default(0)
+  codigo            String?
+  preco             Float
+  promocao          Float?              @default(dbgenerated("0"))
+  foto              String
+  descricao         String
+  nome              String
+  peso              String?
+  altura            Int?
+  largura           Int?
+  profundidade      Int?
+  fotos             fotos[]
+  categoria         categoria           @relation(fields: [categoria_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  produtos_vendidos produtos_vendidos[]
+}
+
+model sessions {
+  id       Int     @id @default(autoincrement())
+  clientId Int
+  name     String  @db.VarChar(100)
+  token    String
+  clients  clients @relation(fields: [clientId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model enderecos {
+  id          Int      @id @default(autoincrement())
+  logradouro  String
+  numero      String?
+  complemento String?
+  bairro      String
+  cidade      String
+  estado      String
+  cep         String
+  cliente_id  Int
+  vendas      vendas[]
+  cliente     clients  @relation(fields: [cliente_id], references: [id])
+}
+
+model vendas {
+  id                Int                 @id @default(autoincrement())
+  valor_produto     Float
+  valor_frete       Float
+  valor_total       Float
+  juros             Float
+  comprovante       String
+  data_venda        DateTime            @default(now()) @db.Timestamptz(6)
+  cliente_id        Int
+  endereco_id       Int
+  tipo_pagamento    String
+  rastreio          String?
+  status            String
+  parcelas          Int?
+  cliente           clients             @relation(fields: [cliente_id], references: [id])
+  endereco          enderecos           @relation(fields: [endereco_id], references: [id])
+  produtos_vendidos produtos_vendidos[]
+}
+
+model produtos_vendidos {
+  id         Int      @id @default(autoincrement())
+  produto_id Int
+  venda_id   Int
+  marca      String
+  quantidade Int
+  preco      Float
+  promocao   Float
+  nome       String
+  produto    produtos @relation(fields: [produto_id], references: [id])
+  venda      vendas   @relation(fields: [venda_id], references: [id])
+}

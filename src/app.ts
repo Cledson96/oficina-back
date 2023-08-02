@@ -14,7 +14,8 @@ import frete from "./routes/frete";
 import cliente from "./routes/cliente";
 import pagamento from "./routes/pagamento";
 import webhook from "./routes/webhook";
-
+import venda from "./routes/venda";
+import pdf from "./routes/pdf";
 const app = express();
 dotenv.config();
 
@@ -34,6 +35,8 @@ app.use(cliente);
 app.use(frete);
 app.use(pagamento);
 app.use(webhook);
+app.use(venda);
+app.use(pdf);
 app.use(express.static('uploads'));
 
 const port = 55505;

@@ -1,21 +1,32 @@
-import { connection } from "../database/db";
 import { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function clienteId(req: Request, res: Response) {
-  const id = req.params.id;
+  const id: number = Number(req.params.id);
 
   try {
-    const { rows } = await connection.query(
-      "SELECT name, address, phone, phonecontact, cpf, cep, email FROM clients WHERE id = $1;",
-      [id]
-    );
+    const cliente = await prisma.clients.findFirst({
+      where: {
+        id: id,
+      },
+      select: {
+        name: true,
+        address: true,
+        phone: true,
+        phonecontact: true,
+        cpf: true,
+        cep: true,
+        email: true,
+      },
+    });
 
-    if (rows.length === 0) {
+    if (!cliente) {
       res.status(404).send("Usuario não encontrado!");
       return;
     }
 
-    res.status(200).send(rows[0]);
+    res.status(200).send(cliente);
     return;
   } catch (error) {
     res.status(500).send(error);

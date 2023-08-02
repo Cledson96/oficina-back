@@ -1,9 +1,12 @@
-import { connection } from "../database/db";
 import { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
 export async function categoria(req: Request, res: Response) {
-     const sessions = await connection.query('SELECT * FROM categoria;');
-    res.send(sessions.rows)
-    return
-
+  try {
+    const categorias = await prisma.categoria.findMany();
+    res.send(categorias);
+  } catch (error) {
+    res.status(500).send("Erro interno do servidor");
+  }
 }
